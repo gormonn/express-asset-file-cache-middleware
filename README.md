@@ -23,7 +23,7 @@ app.get(
   "/assets/:asset_id",
   async (req, res, next) => {    
     res.locals.fetchUrl = `https://cdn.example.org/path/to/actual/asset/${req.params.asset_id}`;
-
+    res.locals.options = { headers: req.headers }
     res.locals.cacheKey = `${someExpirableUniqueKey}`;
     next();
   },
